@@ -3,7 +3,7 @@
     <h:title>食に関するアンケート_62</h:title>
     <model>
       <instance>
-        <data id="build_-62_1502244338">
+        <data id="build_-62_1503465129">
           <meta>
             <instanceID/>
           </meta>
@@ -69,6 +69,9 @@
           </text>
           <text id="/data/g1/date:hint">
             <value>調査対象者の誕生日を入力</value>
+          </text>
+          <text id="/data/g1/date:constraintMsg">
+            <value>入力可能な範囲は1927年8月1日 ～ 2005年8月1日です。</value>
           </text>
           <text id="/data/g1/sex:label">
             <value>性別</value>
@@ -139,7 +142,7 @@
       <bind nodeset="/data/g1" relevant="(/data/agree=1)"/>
       <bind nodeset="/data/g1/participant" type="string" required="true()" relevant="(/data/agree=1)"/>
       <bind nodeset="/data/g1/age" type="int" required="true()" relevant="(/data/agree=1)" constraint="(. &gt;= '12') and (. &lt;= '90')" jr:constraintMsg="jr:itext('/data/g1/age:constraintMsg')"/>
-      <bind nodeset="/data/g1/date" type="date" required="true()" relevant="(/data/agree=1)" constraint="(.&gt;= date('1927-08-01') and .&lt;=date('2005-08-01'))"/>
+      <bind nodeset="/data/g1/date" type="date" required="true()" relevant="(/data/agree=1)" constraint="(.&gt;= date('1927-08-01') and .&lt;=date('2005-08-01'))" jr:constraintMsg="jr:itext('/data/g1/date:constraintMsg')"/>
       <bind nodeset="/data/g1/sex" type="select1" required="true()" relevant="(/data/agree=1)"/>
       <bind nodeset="/data/food" type="select" required="true()" relevant="(/data/agree=1 and /data/g1/age&gt;=30)" constraint="(not(selected(., '99') and (selected(.,'1') or selected(.,'2') or selected(.,'3') or selected(.,'4') or selected(.,'5'))))"/>
       <bind nodeset="/data/food_specify" type="string" required="true()" relevant="(selected(/data/food, '5'))"/>

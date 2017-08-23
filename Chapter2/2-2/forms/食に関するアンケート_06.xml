@@ -1,0 +1,43 @@
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa">
+  <h:head>
+    <h:title>食に関するアンケート_06</h:title>
+    <model>
+      <instance>
+        <data id="build_-06_1503463912">
+          <meta>
+            <instanceID/>
+          </meta>
+          <today/>
+          <untitled2/>
+        </data>
+      </instance>
+      <itext>
+        <translation lang="English">
+          <text id="/data/untitled2:label">
+            <value></value>
+          </text>
+          <text id="/data/untitled2:hint">
+            <value></value>
+          </text>
+        </translation>
+        <translation lang="Japanese">
+          <text id="/data/untitled2:label">
+            <value></value>
+          </text>
+          <text id="/data/untitled2:hint">
+            <value></value>
+          </text>
+        </translation>
+      </itext>
+      <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" calculate="concat('uuid:', uuid())"/>
+      <bind nodeset="/data/today" type="date" jr:preload="date" jr:preloadParams="today"/>
+      <bind nodeset="/data/untitled2" type="string"/>
+    </model>
+  </h:head>
+  <h:body>
+    <input ref="/data/untitled2">
+      <label ref="jr:itext('/data/untitled2:label')"/>
+      <hint ref="jr:itext('/data/untitled2:hint')"/>
+    </input>
+  </h:body>
+</h:html>

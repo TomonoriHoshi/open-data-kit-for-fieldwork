@@ -1,0 +1,37 @@
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa">
+  <h:head>
+    <h:title>食に関するアンケート_09</h:title>
+    <model>
+      <instance>
+        <data id="build_-09_1503463961">
+          <meta>
+            <instanceID/>
+          </meta>
+          <today/>
+          <surveyor>
+            星
+          </surveyor>
+        </data>
+      </instance>
+      <itext>
+        <translation lang="Japanese">
+          <text id="/data/surveyor:label">
+            <value>調査者</value>
+          </text>
+          <text id="/data/surveyor:hint">
+            <value>調査者名を入力</value>
+          </text>
+        </translation>
+      </itext>
+      <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" calculate="concat('uuid:', uuid())"/>
+      <bind nodeset="/data/today" type="date" jr:preload="date" jr:preloadParams="today"/>
+      <bind nodeset="/data/surveyor" type="string"/>
+    </model>
+  </h:head>
+  <h:body>
+    <input ref="/data/surveyor">
+      <label ref="jr:itext('/data/surveyor:label')"/>
+      <hint ref="jr:itext('/data/surveyor:hint')"/>
+    </input>
+  </h:body>
+</h:html>

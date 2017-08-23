@@ -1,0 +1,160 @@
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa">
+  <h:head>
+    <h:title>食に関するアンケート_29</h:title>
+    <model>
+      <instance>
+        <data id="build_-29_1503464362">
+          <meta>
+            <instanceID/>
+          </meta>
+          <today/>
+          <surveyor/>
+          <participant/>
+          <age/>
+          <date/>
+          <sex/>
+          <food/>
+        </data>
+      </instance>
+      <itext>
+        <translation lang="Japanese">
+          <text id="/data/surveyor:label">
+            <value>調査者</value>
+          </text>
+          <text id="/data/surveyor:hint">
+            <value>調査者名を入力</value>
+          </text>
+          <text id="/data/surveyor:constraintMsg">
+            <value></value>
+          </text>
+          <text id="/data/participant:label">
+            <value>対象者</value>
+          </text>
+          <text id="/data/participant:hint">
+            <value>調査対象者の名前を入力</value>
+          </text>
+          <text id="/data/age:label">
+            <value>年齢</value>
+          </text>
+          <text id="/data/age:hint">
+            <value>調査対象者の年齢を入力</value>
+          </text>
+          <text id="/data/age:constraintMsg">
+            <value>調査対象の年齢は12～90歳です。</value>
+          </text>
+          <text id="/data/date:label">
+            <value>誕生日</value>
+          </text>
+          <text id="/data/date:hint">
+            <value>調査対象者の誕生日を入力</value>
+          </text>
+          <text id="/data/date:constraintMsg">
+            <value>入力可能な範囲は1927年8月1日 ～ 2005年8月1日です。</value>
+          </text>
+          <text id="/data/sex:label">
+            <value>性別</value>
+          </text>
+          <text id="/data/sex:hint">
+            <value>調査対象者の性別を選択</value>
+          </text>
+          <text id="/data/sex:option0">
+            <value>女</value>
+          </text>
+          <text id="/data/sex:option1">
+            <value>男</value>
+          </text>
+          <text id="/data/food:label">
+            <value>好きな料理</value>
+          </text>
+          <text id="/data/food:hint">
+            <value>調査対象者の好きな料理を選択</value>
+          </text>
+          <text id="/data/food:option0">
+            <value>日本料理</value>
+          </text>
+          <text id="/data/food:option1">
+            <value>中華料理</value>
+          </text>
+          <text id="/data/food:option2">
+            <value>フランス料理</value>
+          </text>
+          <text id="/data/food:option3">
+            <value>インド料理</value>
+          </text>
+          <text id="/data/food:option4">
+            <value>その他</value>
+          </text>
+          <text id="/data/food:option5">
+            <value>該当なし</value>
+          </text>
+        </translation>
+      </itext>
+      <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" calculate="concat('uuid:', uuid())"/>
+      <bind nodeset="/data/today" type="date" jr:preload="date" jr:preloadParams="today"/>
+      <bind nodeset="/data/surveyor" type="string" required="true()" jr:constraintMsg="jr:itext('/data/surveyor:constraintMsg')"/>
+      <bind nodeset="/data/participant" type="string" required="true()"/>
+      <bind nodeset="/data/age" type="int" required="true()" constraint="(. &gt;= '12') and (. &lt;= '90')" jr:constraintMsg="jr:itext('/data/age:constraintMsg')"/>
+      <bind nodeset="/data/date" type="date" required="true()" constraint="(.&gt;= date('1927-08-01') and .&lt;=date('2005-08-01'))" jr:constraintMsg="jr:itext('/data/date:constraintMsg')"/>
+      <bind nodeset="/data/sex" type="select1" required="true()"/>
+      <bind nodeset="/data/food" type="select" required="true()"/>
+    </model>
+  </h:head>
+  <h:body>
+    <input ref="/data/surveyor">
+      <label ref="jr:itext('/data/surveyor:label')"/>
+      <hint ref="jr:itext('/data/surveyor:hint')"/>
+    </input>
+    <input ref="/data/participant">
+      <label ref="jr:itext('/data/participant:label')"/>
+      <hint ref="jr:itext('/data/participant:hint')"/>
+    </input>
+    <input ref="/data/age">
+      <label ref="jr:itext('/data/age:label')"/>
+      <hint ref="jr:itext('/data/age:hint')"/>
+    </input>
+    <input ref="/data/date">
+      <label ref="jr:itext('/data/date:label')"/>
+      <hint ref="jr:itext('/data/date:hint')"/>
+    </input>
+    <select1 ref="/data/sex">
+      <label ref="jr:itext('/data/sex:label')"/>
+      <hint ref="jr:itext('/data/sex:hint')"/>
+      <item>
+        <label ref="jr:itext('/data/sex:option0')"/>
+        <value>0</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/data/sex:option1')"/>
+        <value>1</value>
+      </item>
+    </select1>
+    <select ref="/data/food">
+      <label ref="jr:itext('/data/food:label')"/>
+      <hint ref="jr:itext('/data/food:hint')"/>
+      <item>
+        <label ref="jr:itext('/data/food:option0')"/>
+        <value>1</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/data/food:option1')"/>
+        <value>2</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/data/food:option2')"/>
+        <value>3</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/data/food:option3')"/>
+        <value>4</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/data/food:option4')"/>
+        <value>5</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/data/food:option5')"/>
+        <value>99</value>
+      </item>
+    </select>
+  </h:body>
+</h:html>

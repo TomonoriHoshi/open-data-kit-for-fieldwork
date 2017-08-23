@@ -1,0 +1,23 @@
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa">
+  <h:head>
+    <h:title>食に関するアンケート_03</h:title>
+    <model>
+      <instance>
+        <data id="build_-03_1503463863">
+          <meta>
+            <instanceID/>
+          </meta>
+          <today/>
+        </data>
+      </instance>
+      <itext>
+        <translation lang="Japanese">
+        </translation>
+      </itext>
+      <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" calculate="concat('uuid:', uuid())"/>
+      <bind nodeset="/data/today" type="string" jr:preload="property" jr:preloadParams="deviceid"/>
+    </model>
+  </h:head>
+  <h:body>
+  </h:body>
+</h:html>

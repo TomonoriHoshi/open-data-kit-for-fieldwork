@@ -1,0 +1,101 @@
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa">
+  <h:head>
+    <h:title>食に関するアンケート_21</h:title>
+    <model>
+      <instance>
+        <data id="build_-21_1503464156">
+          <meta>
+            <instanceID/>
+          </meta>
+          <today/>
+          <surveyor/>
+          <participant/>
+          <age/>
+          <year/>
+          <month/>
+          <day/>
+        </data>
+      </instance>
+      <itext>
+        <translation lang="Japanese">
+          <text id="/data/surveyor:label">
+            <value>調査者</value>
+          </text>
+          <text id="/data/surveyor:hint">
+            <value>調査者名を入力</value>
+          </text>
+          <text id="/data/surveyor:constraintMsg">
+            <value></value>
+          </text>
+          <text id="/data/participant:label">
+            <value>対象者</value>
+          </text>
+          <text id="/data/participant:hint">
+            <value>調査対象者の名前を入力</value>
+          </text>
+          <text id="/data/age:label">
+            <value>年齢</value>
+          </text>
+          <text id="/data/age:hint">
+            <value>調査対象者の年齢を入力</value>
+          </text>
+          <text id="/data/age:constraintMsg">
+            <value>調査対象の年齢は12～90歳です。</value>
+          </text>
+          <text id="/data/year:label">
+            <value>誕生年</value>
+          </text>
+          <text id="/data/year:hint">
+            <value>調査対象者の誕生年を入力。不明の場合は9999</value>
+          </text>
+          <text id="/data/month:label">
+            <value>誕生月</value>
+          </text>
+          <text id="/data/month:hint">
+            <value>調査対象者の誕生月を入力。不明の場合は99</value>
+          </text>
+          <text id="/data/day:label">
+            <value>誕生日</value>
+          </text>
+          <text id="/data/day:hint">
+            <value>調査対象者の誕生日を入力。不明の場合は99</value>
+          </text>
+        </translation>
+      </itext>
+      <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" calculate="concat('uuid:', uuid())"/>
+      <bind nodeset="/data/today" type="date" jr:preload="date" jr:preloadParams="today"/>
+      <bind nodeset="/data/surveyor" type="string" required="true()" jr:constraintMsg="jr:itext('/data/surveyor:constraintMsg')"/>
+      <bind nodeset="/data/participant" type="string" required="true()"/>
+      <bind nodeset="/data/age" type="int" required="true()" constraint="(. &gt;= '12') and (. &lt;= '90')" jr:constraintMsg="jr:itext('/data/age:constraintMsg')"/>
+      <bind nodeset="/data/year" type="int" required="true()" constraint="(.&gt;= '1927' and .&lt;= '2005' or .='9999')"/>
+      <bind nodeset="/data/month" type="int" required="true()" constraint="(.&gt;= '1' and .&lt;= '12' or .='99')"/>
+      <bind nodeset="/data/day" type="int" required="true()" constraint="(.&gt;= '1' and .&lt;= '31' or .='99')"/>
+    </model>
+  </h:head>
+  <h:body>
+    <input ref="/data/surveyor">
+      <label ref="jr:itext('/data/surveyor:label')"/>
+      <hint ref="jr:itext('/data/surveyor:hint')"/>
+    </input>
+    <input ref="/data/participant">
+      <label ref="jr:itext('/data/participant:label')"/>
+      <hint ref="jr:itext('/data/participant:hint')"/>
+    </input>
+    <input ref="/data/age">
+      <label ref="jr:itext('/data/age:label')"/>
+      <hint ref="jr:itext('/data/age:hint')"/>
+    </input>
+    <input ref="/data/year">
+      <label ref="jr:itext('/data/year:label')"/>
+      <hint ref="jr:itext('/data/year:hint')"/>
+    </input>
+    <input ref="/data/month">
+      <label ref="jr:itext('/data/month:label')"/>
+      <hint ref="jr:itext('/data/month:hint')"/>
+    </input>
+    <input ref="/data/day">
+      <label ref="jr:itext('/data/day:label')"/>
+      <hint ref="jr:itext('/data/day:hint')"/>
+    </input>
+  </h:body>
+</h:html>
