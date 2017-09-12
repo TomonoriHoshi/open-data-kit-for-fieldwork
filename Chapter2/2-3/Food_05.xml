@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <h:head>
+    <h:title>食に関するアンケート_x05</h:title>
+    <model>
+      <itext>
+        <translation default="true()" lang="Japanese">
+          <text id="/Food_05/agree:hint">
+            <value>本アンケート調査は食の嗜好性に関するアンケートです。得られた個人情報は食の嗜好性調査以外の解析には利用しません。</value>
+          </text>
+          <text id="/Food_05/agree:label">
+            <value>同意</value>
+          </text>
+          <text id="/Food_05/agree/1:label">
+            <value>はい</value>
+          </text>
+          <text id="/Food_05/surveyor:label">
+            <value>調査者</value>
+          </text>
+          <text id="/Food_05/surveyor:hint">
+            <value>調査者名を入力</value>
+          </text>
+          <text id="/Food_05/agree/0:label">
+            <value>いいえ</value>
+          </text>
+        </translation>
+      </itext>
+      <instance>
+        <Food_05 id="food_preference_05" version="20160808">
+          <today/>
+          <surveyor/>
+          <agree/>
+          <meta>
+            <instanceID/>
+          </meta>
+        </Food_05>
+      </instance>
+      <bind jr:preload="date" jr:preloadParams="today" nodeset="/Food_05/today" type="date"/>
+      <bind jr:requiredMsg="必須入力です。" nodeset="/Food_05/surveyor" required="true()" type="string"/>
+      <bind jr:requiredMsg="必須入力です。" nodeset="/Food_05/agree" required="true()" type="select1"/>
+      <bind calculate="concat('uuid:', uuid())" nodeset="/Food_05/meta/instanceID" readonly="true()" type="string"/>
+    </model>
+  </h:head>
+  <h:body>
+    <input ref="/Food_05/surveyor">
+      <label ref="jr:itext('/Food_05/surveyor:label')"/>
+      <hint ref="jr:itext('/Food_05/surveyor:hint')"/>
+    </input>
+    <select1 ref="/Food_05/agree">
+      <label ref="jr:itext('/Food_05/agree:label')"/>
+      <hint ref="jr:itext('/Food_05/agree:hint')"/>
+      <item>
+        <label ref="jr:itext('/Food_05/agree/1:label')"/>
+        <value>1</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/Food_05/agree/0:label')"/>
+        <value>0</value>
+      </item>
+    </select1>
+  </h:body>
+</h:html>
