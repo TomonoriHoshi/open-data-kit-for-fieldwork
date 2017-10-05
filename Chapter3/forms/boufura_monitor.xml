@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <h:head>
+    <h:title>ボウフラ（モニタリング調査）</h:title>
+    <model>
+      <instance>
+        <boufura_monitor id="boufura_monitor_1" version="1">
+          <start/>
+          <end/>
+          <surveyor/>
+          <trap_id/>
+          <water_temp/>
+          <boufura/>
+          <info/>
+          <meta>
+            <instanceID/>
+            <instanceName/>
+          </meta>
+        </boufura_monitor>
+      </instance>
+      <bind jr:preload="timestamp" jr:preloadParams="start" nodeset="/boufura_monitor/start" type="dateTime"/>
+      <bind jr:preload="timestamp" jr:preloadParams="end" nodeset="/boufura_monitor/end" type="dateTime"/>
+      <bind jr:requiredMsg="必須入力" nodeset="/boufura_monitor/surveyor" required="true()" type="select1"/>
+      <bind constraint="(.&gt;=1) and (.&lt;=27)" jr:constraintMsg="調査地点番号は１－２７の範囲です。" jr:requiredMsg="必須入力" nodeset="/boufura_monitor/trap_id" required="true()" type="int"/>
+      <bind constraint="(.&gt;=-10) and (.&lt;=40)" jr:constraintMsg="水温はマイナス10℃～40℃の範囲です。" jr:requiredMsg="必須入力" nodeset="/boufura_monitor/water_temp" required="true()" type="decimal"/>
+      <bind jr:requiredMsg="必須入力" nodeset="/boufura_monitor/boufura" required="true()" type="select1"/>
+      <bind nodeset="/boufura_monitor/info" type="string"/>
+      <bind calculate="concat('uuid:', uuid())" nodeset="/boufura_monitor/meta/instanceID" readonly="true()" type="string"/>
+      <bind calculate="concat(' 調査地点番号: ',  /boufura_monitor/trap_id )" nodeset="/boufura_monitor/meta/instanceName" type="string"/>
+    </model>
+  </h:head>
+  <h:body>
+    <select1 ref="/boufura_monitor/surveyor">
+      <label>Q1. 調査者名</label>
+      <item>
+        <label>田中</label>
+        <value>tanaka</value>
+      </item>
+      <item>
+        <label>鈴木</label>
+        <value>susuki</value>
+      </item>
+      <item>
+        <label>佐藤</label>
+        <value>sato</value>
+      </item>
+      <item>
+        <label>高橋</label>
+        <value>takahashi</value>
+      </item>
+    </select1>
+    <input ref="/boufura_monitor/trap_id">
+      <label>Q2. 調査地点番号</label>
+    </input>
+    <input ref="/boufura_monitor/water_temp">
+      <label>Q3. 水温</label>
+    </input>
+    <select1 ref="/boufura_monitor/boufura">
+      <label>Q4. 幼虫の有無</label>
+      <item>
+        <label>はい</label>
+        <value>1</value>
+      </item>
+      <item>
+        <label>いいえ</label>
+        <value>0</value>
+      </item>
+    </select1>
+    <input ref="/boufura_monitor/info">
+      <label>Q5. 備考</label>
+      <hint>些細な事でも入力してください。</hint>
+    </input>
+  </h:body>
+</h:html>

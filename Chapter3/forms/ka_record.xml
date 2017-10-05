@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <h:head>
+    <h:title>成虫（同定結果入力）</h:title>
+    <model>
+      <instance>
+        <ka_record id="ka_record_1" version="1">
+          <start/>
+          <end/>
+          <surveyor/>
+          <survey_date/>
+          <trap_id/>
+          <g1>
+            <A-male/>
+            <A-female/>
+            <B-male/>
+            <B-female/>
+            <C-male/>
+            <C-female/>
+            <D-male/>
+            <D-female/>
+            <E-male/>
+            <E-female/>
+            <unknown/>
+          </g1>
+          <info/>
+          <meta>
+            <instanceID/>
+            <instanceName/>
+          </meta>
+        </ka_record>
+      </instance>
+      <bind jr:preload="timestamp" jr:preloadParams="start" nodeset="/ka_record/start" type="dateTime"/>
+      <bind jr:preload="timestamp" jr:preloadParams="end" nodeset="/ka_record/end" type="dateTime"/>
+      <bind jr:requiredMsg="必須入力" nodeset="/ka_record/surveyor" required="true()" type="select1"/>
+      <bind nodeset="/ka_record/survey_date" type="date"/>
+      <bind constraint="(.&gt;=1) and (.&lt;=27)" jr:constraintMsg="調査地点番号は１－２７の範囲です。" jr:requiredMsg="必須入力" nodeset="/ka_record/trap_id" required="true()" type="int"/>
+      <bind constraint="(.&gt;=0) and (.&lt;=200)" jr:constraintMsg="個体数は0~200の範囲で入力可。" jr:requiredMsg="必須入力" nodeset="/ka_record/g1/A-male" required="true()" type="int"/>
+      <bind constraint="(.&gt;=0) and (.&lt;=200)" jr:constraintMsg="個体数は0~200の範囲で入力可。" jr:requiredMsg="必須入力" nodeset="/ka_record/g1/A-female" required="true()" type="int"/>
+      <bind constraint="(.&gt;=0) and (.&lt;=200)" jr:constraintMsg="個体数は0~200の範囲で入力可。" jr:requiredMsg="必須入力" nodeset="/ka_record/g1/B-male" required="true()" type="int"/>
+      <bind constraint="(.&gt;=0) and (.&lt;=200)" jr:constraintMsg="個体数は0~200の範囲で入力可。" jr:requiredMsg="必須入力" nodeset="/ka_record/g1/B-female" required="true()" type="int"/>
+      <bind constraint="(.&gt;=0) and (.&lt;=200)" jr:constraintMsg="個体数は0~200の範囲で入力可。" jr:requiredMsg="必須入力" nodeset="/ka_record/g1/C-male" required="true()" type="int"/>
+      <bind constraint="(.&gt;=0) and (.&lt;=200)" jr:constraintMsg="個体数は0~200の範囲で入力可。" jr:requiredMsg="必須入力" nodeset="/ka_record/g1/C-female" required="true()" type="int"/>
+      <bind constraint="(.&gt;=0) and (.&lt;=200)" jr:constraintMsg="個体数は0~200の範囲で入力可。" jr:requiredMsg="必須入力" nodeset="/ka_record/g1/D-male" required="true()" type="int"/>
+      <bind constraint="(.&gt;=0) and (.&lt;=200)" jr:constraintMsg="個体数は0~200の範囲で入力可。" jr:requiredMsg="必須入力" nodeset="/ka_record/g1/D-female" required="true()" type="int"/>
+      <bind constraint="(.&gt;=0) and (.&lt;=200)" jr:constraintMsg="個体数は0~200の範囲で入力可。" jr:requiredMsg="必須入力" nodeset="/ka_record/g1/E-male" required="true()" type="int"/>
+      <bind constraint="(.&gt;=0) and (.&lt;=200)" jr:constraintMsg="個体数は0~200の範囲で入力可。" jr:requiredMsg="必須入力" nodeset="/ka_record/g1/E-female" required="true()" type="int"/>
+      <bind constraint="(.&gt;=0) and (.&lt;=200)" jr:constraintMsg="個体数は0~200の範囲で入力可。" jr:requiredMsg="必須入力" nodeset="/ka_record/g1/unknown" required="true()" type="int"/>
+      <bind nodeset="/ka_record/info" type="string"/>
+      <bind calculate="concat('uuid:', uuid())" nodeset="/ka_record/meta/instanceID" readonly="true()" type="string"/>
+      <bind calculate="concat('調査日: ', string(today()),'       地点: ',  /ka_record/trap_id )" nodeset="/ka_record/meta/instanceName" type="string"/>
+    </model>
+  </h:head>
+  <h:body>
+    <select1 ref="/ka_record/surveyor">
+      <label>Q1. 同定者名</label>
+      <item>
+        <label>田中</label>
+        <value>tanaka</value>
+      </item>
+      <item>
+        <label>鈴木</label>
+        <value>susuki</value>
+      </item>
+      <item>
+        <label>佐藤</label>
+        <value>sato</value>
+      </item>
+      <item>
+        <label>高橋</label>
+        <value>takahashi</value>
+      </item>
+    </select1>
+    <input ref="/ka_record/survey_date">
+      <label>Q2. 調査日</label>
+    </input>
+    <input ref="/ka_record/trap_id">
+      <label>Q3. 調査地点番号</label>
+    </input>
+    <group ref="/ka_record/g1">
+      <label>______ 種類 ______</label>
+      <input ref="/ka_record/g1/A-male">
+        <label>Q4-1. 種類A（オス）</label>
+      </input>
+      <input ref="/ka_record/g1/A-female">
+        <label>Q4-2. 種類A（メス）</label>
+      </input>
+      <input ref="/ka_record/g1/B-male">
+        <label>Q5-1. 種類B（オス）</label>
+      </input>
+      <input ref="/ka_record/g1/B-female">
+        <label>Q5-2. 種類B（メス）</label>
+      </input>
+      <input ref="/ka_record/g1/C-male">
+        <label>Q6-1. 種類C（オス）</label>
+      </input>
+      <input ref="/ka_record/g1/C-female">
+        <label>Q6-2. 種類C（メス）</label>
+      </input>
+      <input ref="/ka_record/g1/D-male">
+        <label>Q7-1. 種類D（オス）</label>
+      </input>
+      <input ref="/ka_record/g1/D-female">
+        <label>Q7-2. 種類D（メス）</label>
+      </input>
+      <input ref="/ka_record/g1/E-male">
+        <label>Q8-1. 種類E（オス）</label>
+      </input>
+      <input ref="/ka_record/g1/E-female">
+        <label>Q8-2. 種類E（メス）</label>
+      </input>
+      <input ref="/ka_record/g1/unknown">
+        <label>Q9. わからない</label>
+      </input>
+    </group>
+    <input ref="/ka_record/info">
+      <label>Q10. 備考</label>
+      <hint>些細な事でも入力してください。</hint>
+    </input>
+  </h:body>
+</h:html>

@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <h:head>
+    <h:title>トラップ設置用</h:title>
+    <model>
+      <instance>
+        <trap_set id="trap_setup_1" version="1">
+          <start/>
+          <end/>
+          <surveyor/>
+          <trap_id/>
+          <install/>
+          <install_no/>
+          <water/>
+          <water_no/>
+          <marking/>
+          <marking_no/>
+          <photo/>
+          <gps/>
+          <info/>
+          <meta>
+            <instanceID/>
+            <instanceName/>
+          </meta>
+        </trap_set>
+      </instance>
+      <bind jr:preload="timestamp" jr:preloadParams="start" nodeset="/trap_set/start" type="dateTime"/>
+      <bind jr:preload="timestamp" jr:preloadParams="end" nodeset="/trap_set/end" type="dateTime"/>
+      <bind jr:requiredMsg="必須入力" nodeset="/trap_set/surveyor" required="true()" type="select1"/>
+      <bind constraint="(.&gt;0) and (.&lt;27)" jr:constraintMsg="調査地点番号は０－２７の範囲です。" jr:requiredMsg="必須入力" nodeset="/trap_set/trap_id" required="true()" type="int"/>
+      <bind jr:requiredMsg="必須入力" nodeset="/trap_set/install" required="true()" type="select1"/>
+      <bind jr:requiredMsg="理由を記入して下さい。" nodeset="/trap_set/install_no" relevant=" /trap_set/install ='0'" required="true()" type="string"/>
+      <bind jr:requiredMsg="必須入力" nodeset="/trap_set/water" required="true()" type="select1"/>
+      <bind jr:requiredMsg="理由を記入して下さい。" nodeset="/trap_set/water_no" relevant=" /trap_set/water ='0'" required="true()" type="string"/>
+      <bind jr:requiredMsg="必須入力" nodeset="/trap_set/marking" required="true()" type="select1"/>
+      <bind jr:requiredMsg="理由を記入して下さい。" nodeset="/trap_set/marking_no" relevant=" /trap_set/marking ='0'" required="true()" type="string"/>
+      <bind jr:requiredMsg="必須入力" nodeset="/trap_set/photo" required="true()" type="binary"/>
+      <bind jr:requiredMsg="必須入力" nodeset="/trap_set/gps" required="true()" type="geopoint"/>
+      <bind nodeset="/trap_set/info" type="string"/>
+      <bind calculate="concat('uuid:', uuid())" nodeset="/trap_set/meta/instanceID" readonly="true()" type="string"/>
+      <bind calculate="concat(' 調査地点番号: ',  /trap_set/trap_id )" nodeset="/trap_set/meta/instanceName" type="string"/>
+    </model>
+  </h:head>
+  <h:body>
+    <select1 ref="/trap_set/surveyor">
+      <label>Q1. 調査者名を入力</label>
+      <item>
+        <label>田中</label>
+        <value>tanaka</value>
+      </item>
+      <item>
+        <label>鈴木</label>
+        <value>susuki</value>
+      </item>
+      <item>
+        <label>佐藤</label>
+        <value>sato</value>
+      </item>
+      <item>
+        <label>高橋</label>
+        <value>takahashi</value>
+      </item>
+    </select1>
+    <input ref="/trap_set/trap_id">
+      <label>Q2. 調査地点番号</label>
+    </input>
+    <select1 ref="/trap_set/install">
+      <label>Q3. 地面から120センチの高さにトラップを設置したか？</label>
+      <item>
+        <label>はい</label>
+        <value>1</value>
+      </item>
+      <item>
+        <label>いいえ</label>
+        <value>0</value>
+      </item>
+    </select1>
+    <input ref="/trap_set/install_no">
+      <label>Q3-1. 「いいえ」の理由を記す。</label>
+    </input>
+    <select1 ref="/trap_set/water">
+      <label>Q4. トラップ内部に水を注入したか？</label>
+      <item>
+        <label>はい</label>
+        <value>1</value>
+      </item>
+      <item>
+        <label>いいえ</label>
+        <value>0</value>
+      </item>
+    </select1>
+    <input ref="/trap_set/water_no">
+      <label>Q4-1. 「いいえ」の理由を記す。</label>
+    </input>
+    <select1 ref="/trap_set/marking">
+      <label>Q5. マーキングテープを結んだか？</label>
+      <item>
+        <label>はい</label>
+        <value>1</value>
+      </item>
+      <item>
+        <label>いいえ</label>
+        <value>0</value>
+      </item>
+    </select1>
+    <input ref="/trap_set/marking_no">
+      <label>Q5-1. 「いいえ」の理由を記す。</label>
+    </input>
+    <upload mediatype="image/*" ref="/trap_set/photo">
+      <label>Q6. トラップ設置地点の写真を撮影</label>
+    </upload>
+    <input ref="/trap_set/gps">
+      <label>Q7. 位置情報の取得</label>
+      <hint>GPS coordinates can only be collected when outside.</hint>
+    </input>
+    <input ref="/trap_set/info">
+      <label>Q8. 備考</label>
+      <hint>些細な事でも入力してください。</hint>
+    </input>
+  </h:body>
+</h:html>

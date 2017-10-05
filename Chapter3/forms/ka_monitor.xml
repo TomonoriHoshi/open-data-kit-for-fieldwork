@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <h:head>
+    <h:title>成虫（モニタリング調査）</h:title>
+    <model>
+      <instance>
+        <ka_monitor id="ka_minitor_1" version="1">
+          <start/>
+          <end/>
+          <surveyor/>
+          <trap_id/>
+          <g1>
+            <temp/>
+            <humid/>
+          </g1>
+          <info/>
+          <meta>
+            <instanceID/>
+            <instanceName/>
+          </meta>
+        </ka_monitor>
+      </instance>
+      <bind jr:preload="timestamp" jr:preloadParams="start" nodeset="/ka_monitor/start" type="dateTime"/>
+      <bind jr:preload="timestamp" jr:preloadParams="end" nodeset="/ka_monitor/end" type="dateTime"/>
+      <bind jr:requiredMsg="必須入力" nodeset="/ka_monitor/surveyor" required="true()" type="select1"/>
+      <bind constraint="(.&gt;=1) and (.&lt;=27)" jr:constraintMsg="調査地点番号は１－２７の範囲です。" jr:requiredMsg="必須入力" nodeset="/ka_monitor/trap_id" required="true()" type="int"/>
+      <bind constraint="(.&gt;=-10) and (.&lt;=50)" jr:constraintMsg="気温は-10～50℃の範囲です。" jr:requiredMsg="必須入力" nodeset="/ka_monitor/g1/temp" required="true()" type="decimal"/>
+      <bind constraint="(.&gt;=0) and (.&lt;=100)" jr:constraintMsg="湿度は０～100の範囲です。" jr:requiredMsg="必須入力" nodeset="/ka_monitor/g1/humid" required="true()" type="decimal"/>
+      <bind nodeset="/ka_monitor/info" type="string"/>
+      <bind calculate="concat('uuid:', uuid())" nodeset="/ka_monitor/meta/instanceID" readonly="true()" type="string"/>
+      <bind calculate="concat('調査日: ', string(today()),'       地点: ',  /ka_monitor/trap_id )" nodeset="/ka_monitor/meta/instanceName" type="string"/>
+    </model>
+  </h:head>
+  <h:body>
+    <select1 ref="/ka_monitor/surveyor">
+      <label>Q1. 調査者名</label>
+      <item>
+        <label>田中</label>
+        <value>tanaka</value>
+      </item>
+      <item>
+        <label>鈴木</label>
+        <value>susuki</value>
+      </item>
+      <item>
+        <label>佐藤</label>
+        <value>sato</value>
+      </item>
+      <item>
+        <label>高橋</label>
+        <value>takahashi</value>
+      </item>
+    </select1>
+    <input ref="/ka_monitor/trap_id">
+      <label>Q2. 調査地点番号</label>
+    </input>
+    <group appearance="field-list" ref="/ka_monitor/g1">
+      <label>______環境______</label>
+      <input ref="/ka_monitor/g1/temp">
+        <label>Q3. 気温</label>
+      </input>
+      <input ref="/ka_monitor/g1/humid">
+        <label>Q4. 湿度</label>
+      </input>
+    </group>
+    <input ref="/ka_monitor/info">
+      <label>Q5. 備考</label>
+      <hint>些細な事でも入力してください。</hint>
+    </input>
+  </h:body>
+</h:html>
