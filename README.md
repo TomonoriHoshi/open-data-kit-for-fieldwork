@@ -1,6 +1,6 @@
 # 『はじめてのOpen Data Kitでフィールドワーク』
 ### － スマホ・タブレットで調査する人のために －
-<img src="https://github.com/TomonoriHoshi/open-data-kit-for-fieldwork/blob/master/ODK%20book%20cover.png" width="480px">
+<img src="https://github.com/TomonoriHoshi/open-data-kit-for-fieldwork/blob/master/ODK%20book%20cover.png" width="320px">
 * 本リポジトリは星出版の『はじめてのOpen Data Kitでフィールドワーク － スマホ・タブレットで調査する人のために －』のサンプルデータ保管用サイトです。
 
 - - -
