@@ -1,7 +1,8 @@
 # 『はじめてのOpen Data Kitでフィールドワーク』
 ### － スマホ・タブレットで調査する人のために －
 
-現在、残念なことに学生に献本した本が転売され、アマゾンに出ています。資金難のためにアマゾンでの在庫を切らしていますが、本が必要な方は連絡していただければ、直送にて対応します。メール　→　tomonori.hoshi.japan@gmail.com
+ご要望があればですが、**本書もそろそろ内容が古くなってきたので、PDFの無料公開を検討しています。**
+
 
 <img src="https://github.com/TomonoriHoshi/open-data-kit-for-fieldwork/blob/master/ODK%20book%20cover.png" width="320px">
 * 本リポジトリは星出版の『はじめてのOpen Data Kitでフィールドワーク － スマホ・タブレットで調査する人のために －』のサンプルデータ保管用サイトです。
