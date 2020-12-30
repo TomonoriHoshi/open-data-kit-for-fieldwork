@@ -1,7 +1,9 @@
 # 『はじめてのOpen Data Kitでフィールドワーク』
 ### － スマホ・タブレットで調査する人のために －
 
-ご要望があればですが、**本書もそろそろ内容が古くなってきたので、PDFの無料公開を検討しています。**
+**2020年12月31日より、PDFの無料公開をはじめました。**
+
+https://fieldwork.booth.pm/items/2644636
 
 
 <img src="https://github.com/TomonoriHoshi/open-data-kit-for-fieldwork/blob/master/ODK%20book%20cover.png" width="320px">
